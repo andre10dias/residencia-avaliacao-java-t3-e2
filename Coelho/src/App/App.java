@@ -6,7 +6,10 @@ public class App {
 
 	public static void main(String[] args) {
 		//teste menu cliente
-		Menu.menuCliente();
+		//Menu.menuCliente();
+		
+		//teste menu imóvel
+		Menu.menuImovel();
 
 	}
 

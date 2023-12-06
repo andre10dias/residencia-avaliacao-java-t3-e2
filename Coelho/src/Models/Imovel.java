@@ -47,5 +47,10 @@ public class Imovel {
 	public void setLeituraAtual(int leituraAtual) {
 		this.leituraAtual = leituraAtual;
 	}
+	
+	@Override
+	public String toString() {
+		return this.matricula + "\t" + this.endereco;
+	}
 
 }
