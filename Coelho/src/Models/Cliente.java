@@ -42,5 +42,10 @@ public class Cliente {
 	public void setImoveis(List<Imovel> imoveis) {
 		this.imoveis = imoveis;
 	}
+	
+	@Override
+	public String toString() {
+		return this.cpf + "\t" + this.nome;
+	}
 
 }
