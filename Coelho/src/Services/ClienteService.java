@@ -55,4 +55,14 @@ public class ClienteService {
 
 		return null;
 	}
+
+	public static void alterarCliente(Cliente _Clientec) {
+		Cliente cliente = consultarCliente(clientes,_Cliente.getCpf());
+
+		if(cliente == null){
+			System.out.println("Não é possível altear um cliente que não está cadastrado");
+		}else{
+			clientes.set(clientes.indexOf(_Clientec), _Clientec);
+		}
+	}
 }
