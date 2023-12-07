@@ -9,6 +9,7 @@ import Models.Imovel;
 import Models.Pagamento;
 import Services.FaturaService;
 import Services.ImovelService;
+import Services.PagamentoService;
 import Utils.Util;
 
 public class PagamentoController {
@@ -29,6 +30,11 @@ public class PagamentoController {
 			int valor = Util.stringToInt(entrada.nextLine());
 			
 			Pagamento pagamento = new Pagamento(faturaSelecionada, valor);
+			
+			List<Pagamento> pagamentosAnteriores = PagamentoService.getPagamentosByFatura(faturaSelecionada);
+			for (Pagamento p : pagamentosAnteriores) {
+				valor += p.getValor();
+			}
 			
 			if (valor == faturaSelecionada.getValorCalculado()) {
 				pagamento.getFatura().setQuitada(true);
