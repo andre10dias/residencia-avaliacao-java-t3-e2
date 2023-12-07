@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.Scanner;
 
 import Menu.Menu;
+import Models.Cliente;
 import Models.Fatura;
 import Models.Imovel;
 import Models.Pagamento;
+import Services.ClienteService;
 import Services.FaturaService;
 import Services.ImovelService;
 import Services.PagamentoService;
@@ -40,23 +42,44 @@ public class PagamentoController {
 				pagamento.getFatura().setQuitada(true);
 			}
 			else if (valor > pagamento.getFatura().getValorCalculado()) {
+				pagamento.getFatura().setQuitada(true);
+				
 				//TODO: Implementar reembolso
 			}
+			
+			PagamentoService.addPagamento(pagamento);
 		}
 		else {
-			System.out.println("\\nNão existem dados para serem exibidos.");
+			System.out.println("\nNão existem dados para serem exibidos.");
 		}
 		
 	}
 
 	public static void listarTodos() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("\n======================== Listar pagamentos ========================\n");
+		List<Pagamento> pagamentos = PagamentoService.getPagamentos();
+		listar(pagamentos);
 	}
 
 	public static void consultarPagFatura() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("\n======================== Listar pagamentos da fatura ========================\n");
+		Fatura fatura = Menu.menuSelecionarFatura(FaturaService.getFaturas());
+		List<Pagamento> pagamentos = PagamentoService.getPagamentosByFatura(fatura);
+		listar(pagamentos);
+	}
+	
+	private static void listar(List<Pagamento> pagamentos) {
+		if (!pagamentos.isEmpty()) {
+			System.out.println("Data Pagamento \t Valor Pagamento \t Valor Fatura \t Fatura Quitada");
+			System.out.println("--------------------------------------------------------------------");
+			
+			for (Pagamento pagamento : pagamentos) {
+				System.out.println(pagamento.toString());
+			}
+		}
+		else {
+			System.out.println("\nNão existem dados para serem exibidos.");
+		}
 	}
 
 }

@@ -20,7 +20,7 @@ public class Menu {
 	
 	public static void menuPrincipal() {
 		List<String> itens = new ArrayList<>(Arrays.asList("[ 1 ] Imóvel", "[ 2 ] Cliente"));
-		int opcao;
+		int opcao = -1;
 		
 		if (!ImovelService.getImoveis().isEmpty() && !ClienteService.getClientes().isEmpty()) {
 			itens.add("[ 3 ] Fatura");
@@ -33,28 +33,38 @@ public class Menu {
 		itens.add("[ 0 ] Sair");
 		
 		do {
-			MenuUtil.montaMenu(itens, "Empresa de Distribuição de Energia COELHO");
-			opcao = MenuUtil.obterOpcao(itens.size());
-			
-			switch (opcao) {
+			if (opcao != 0) {				
+				MenuUtil.montaMenu(itens, "Empresa de Distribuição de Energia COELHO");
+				opcao = MenuUtil.obterOpcao(itens.size());
+				
+				switch (opcao) {
 				case 1:
 					menuImovel();
+					opcao = 0;
 					break;
 					
 				case 2:
 					menuCliente();
+					opcao = 0;
 					break;
 					
 				case 3:
 					menuFatura();
+					opcao = 0;
+					break;
+					
+				case 4:
+					menuPagamento();
+					opcao = 0;
 					break;
 					
 				case 0:
 					System.out.println("\nFinalizando programa...");
 					break;
-	
+					
 				default:
 					break;
+				}
 			}
 		} while (opcao != 0);
 	}
@@ -63,7 +73,7 @@ public class Menu {
 		List<String> itens = new ArrayList<>(Arrays.asList("[ 1 ] Cadastrar", "[ 2 ] Listar", "[ 0 ] Sair"));
 		int opcao;
 		
-		while (true) {
+		do {
 			MenuUtil.montaMenu(itens, "Menu Clientes");
 			opcao = MenuUtil.obterOpcao(itens.size());
 			
@@ -83,14 +93,14 @@ public class Menu {
 				default:
 					break;
 			}
-		}
+		} while (opcao != 0);
 	}
 	
 	public static void menuImovel() {
 		List<String> itens = new ArrayList<>(Arrays.asList("[ 1 ] Cadastrar", "[ 2 ] Listar", "[ 0 ] Sair"));
 		int opcao;
 		
-		while (true) {
+		do {
 			MenuUtil.montaMenu(itens, "Menu Imóveis");
 			opcao = MenuUtil.obterOpcao(itens.size());
 			
@@ -110,7 +120,7 @@ public class Menu {
 				default:
 					break;
 			}
-		}
+		} while (opcao != 0);
 	}
 	
 	public static void menuFatura() {
@@ -119,7 +129,7 @@ public class Menu {
 		));
 		int opcao;
 		
-		while (true) {
+		do {
 			MenuUtil.montaMenu(itens, "Menu Fatura");
 			opcao = MenuUtil.obterOpcao(itens.size());
 			
@@ -143,16 +153,16 @@ public class Menu {
 				default:
 					break;
 			}
-		}
+		} while (opcao != 0);
 	}
 	
 	public static void menuPagamento() {
 		List<String> itens = new ArrayList<>(Arrays.asList(
-				"[ 1 ] Realizar pagamento", "[ 2 ] Listar todos", "[ 3 ] Consultar pagamento de fatura", "[ 0 ] Sair"
+				"[ 1 ] Realizar pagamento", "[ 2 ] Listar todos os pagamentos", "[ 3 ] Consultar pagamento de fatura", "[ 0 ] Sair"
 		));
 		int opcao;
 		
-		while (true) {
+		do {
 			MenuUtil.montaMenu(itens, "Menu Fatura");
 			opcao = MenuUtil.obterOpcao(itens.size());
 			
@@ -176,7 +186,7 @@ public class Menu {
 				default:
 					break;
 			}
-		}
+		} while (opcao != 0);
 	}
 	
 	public static Cliente menuSelecionarCliente() {

@@ -29,7 +29,7 @@ public class PagamentoService {
 	public static List<Pagamento> getPagamentosByFatura(Fatura f) {
 		List<Pagamento> pagamentosFatura = new ArrayList<>();
 		
-		for (Pagamento pagamento : pagamentos) {
+		for (Pagamento pagamento : getPagamentos()) {
 			if (pagamento.getFatura().equals(f)) {
 				pagamentosFatura.add(pagamento);
 			}

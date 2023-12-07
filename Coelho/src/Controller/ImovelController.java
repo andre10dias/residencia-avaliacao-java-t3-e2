@@ -36,7 +36,7 @@ public class ImovelController {
 			}
 		}
 		else {
-			System.out.println("\\nNão existem dados para serem exibidos.");
+			System.out.println("\nNão existem dados para serem exibidos.");
 		}
 	}
 	

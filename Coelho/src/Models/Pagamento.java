@@ -41,5 +41,11 @@ public class Pagamento {
 	public void setData(Date data) {
 		this.data = data;
 	}
+	
+	@Override
+	public String toString() {
+		return this.data + "\t\t" + this.valor + "\t\t" + this.fatura.getValorCalculado() 
+			+ "\t" + this.fatura.isQuitada();
+	}
 
 }

@@ -31,7 +31,7 @@ public class FaturaController {
 			imprimeFatura(fatura);
 		}
 		else {
-			System.out.println("\\nNão existem dados para serem exibidos.");
+			System.out.println("\nNão existem dados para serem exibidos.");
 		}
 	}
 	
