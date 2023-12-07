@@ -104,7 +104,7 @@ public class Menu {
 	}
 	
 	public static void menuImovel() {
-		List<String> itens = new ArrayList<>(Arrays.asList("[ 1 ] Cadastrar", "[ 2 ] Listar", "[ 0 ] Sair"));
+		List<String> itens = new ArrayList<>(Arrays.asList("[ 1 ] Cadastrar", "[ 2 ] Listar", "[ 3 ] Remover", "[ 0 ] Sair"));
 		int opcao;
 		
 		do {
@@ -118,6 +118,10 @@ public class Menu {
 					
 				case 2:
 					ImovelController.listarImoveis();
+					break;
+				
+				case 3:
+					ImovelController.removerImovel();
 					break;
 					
 				case 0:
