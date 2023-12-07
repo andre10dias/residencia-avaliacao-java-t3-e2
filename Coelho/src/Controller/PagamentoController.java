@@ -4,11 +4,9 @@ import java.util.List;
 import java.util.Scanner;
 
 import Menu.Menu;
-import Models.Cliente;
 import Models.Fatura;
 import Models.Imovel;
 import Models.Pagamento;
-import Services.ClienteService;
 import Services.FaturaService;
 import Services.ImovelService;
 import Services.PagamentoService;
@@ -34,8 +32,9 @@ public class PagamentoController {
 			Pagamento pagamento = new Pagamento(faturaSelecionada, valor);
 			
 			List<Pagamento> pagamentosAnteriores = PagamentoService.getPagamentosByFatura(faturaSelecionada);
+			double valorPagamentosAnteriores = 0;
 			for (Pagamento p : pagamentosAnteriores) {
-				valor += p.getValor();
+				valorPagamentosAnteriores += p.getValor();
 			}
 			
 			if (valor == faturaSelecionada.getValorCalculado()) {
@@ -43,9 +42,7 @@ public class PagamentoController {
 			}
 			else if (valor > pagamento.getFatura().getValorCalculado()) {
 				pagamento.getFatura().setQuitada(true);
-				
-				//TODO: Implementar reembolso
-				
+				ReembolsoController.realizarReembolso(pagamento, valorPagamentosAnteriores);
 			}
 			
 			PagamentoService.addPagamento(pagamento);
