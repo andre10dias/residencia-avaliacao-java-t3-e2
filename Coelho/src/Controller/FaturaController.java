@@ -9,6 +9,7 @@ import Models.Fatura;
 import Models.Imovel;
 import Services.ClienteService;
 import Services.FaturaService;
+import Services.ImovelService;
 import Utils.Util;
 
 public class FaturaController {
@@ -18,7 +19,7 @@ public class FaturaController {
 	public static void realizarLeitura() {
 		System.out.println("\n======================== Realizar leiruta do imóvel ========================");
 		
-		Imovel imovelSelecionado = Menu.menuSelecionarImovel();
+		Imovel imovelSelecionado = Menu.menuSelecionarImovel(ImovelService.getImoveis());
 		
 		if (imovelSelecionado != null) {			
 			System.out.print("\nValor da leitura: ");

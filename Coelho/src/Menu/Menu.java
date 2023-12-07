@@ -7,13 +7,14 @@ import java.util.List;
 import Controller.ClienteController;
 import Controller.FaturaController;
 import Controller.ImovelController;
+import Controller.PagamentoController;
+import Models.Cliente;
 import Models.Fatura;
 import Models.Imovel;
 import Services.ClienteService;
 import Services.FaturaService;
 import Services.ImovelService;
 import Utils.MenuUtil;
-import Utils.Util;
 
 public class Menu {
 	
@@ -23,6 +24,10 @@ public class Menu {
 		
 		if (!ImovelService.getImoveis().isEmpty() && !ClienteService.getClientes().isEmpty()) {
 			itens.add("[ 3 ] Fatura");
+		}
+		
+		if (!FaturaService.getFaturas().isEmpty()) {
+			itens.add("[ 4 ] Pagamento");
 		}
 		
 		itens.add("[ 0 ] Sair");
@@ -141,8 +146,63 @@ public class Menu {
 		}
 	}
 	
-	public static Imovel menuSelecionarImovel() {
-		List<Imovel> imoveis = ImovelService.getImoveis();
+	public static void menuPagamento() {
+		List<String> itens = new ArrayList<>(Arrays.asList(
+				"[ 1 ] Realizar pagamento", "[ 2 ] Listar todos", "[ 3 ] Consultar pagamento de fatura", "[ 0 ] Sair"
+		));
+		int opcao;
+		
+		while (true) {
+			MenuUtil.montaMenu(itens, "Menu Fatura");
+			opcao = MenuUtil.obterOpcao(itens.size());
+			
+			switch (opcao) {
+				case 1:
+					PagamentoController.realizarPagamento();
+					break;
+					
+				case 2:
+					PagamentoController.listarTodos();
+					break;
+					
+				case 3:
+					PagamentoController.consultarPagFatura();
+					break;
+					
+				case 0:
+					menuPrincipal();
+					break;
+	
+				default:
+					break;
+			}
+		}
+	}
+	
+	public static Cliente menuSelecionarCliente() {
+		List<Cliente> clientes = ClienteService.getClientes();
+		Cliente cliente = null;
+		
+		if (!clientes.isEmpty()) {			
+			List<String> itensMenu = new ArrayList<>();
+			int opcao;
+			
+			for (int i = 0; i < clientes.size(); i++) {
+				itensMenu.add("[ " + (i+1) + " ] " + clientes.get(i).getCpf() + "\t" + clientes.get(i).getNome());
+			}
+			
+			System.out.println("Clientes cadastrados:");
+			System.out.println("\nNome \t\t CPF ");
+			MenuUtil.montaMenu(itensMenu, "");
+			opcao = MenuUtil.obterOpcao(itensMenu.size());
+			
+			cliente = clientes.get(opcao-1);
+		}
+		
+		return cliente;
+	}
+	
+	public static Imovel menuSelecionarImovel(List<Imovel> imoveis) {
 		Imovel imovel = null;
 		
 		if (!imoveis.isEmpty()) {			
@@ -153,7 +213,7 @@ public class Menu {
 				itensMenu.add("[ " + (i+1) + " ] " + imoveis.get(i).getMatricula());
 			}
 			
-			System.out.println("\nMAtrículas dos imíveis cadastrados: ");
+			System.out.println("\nMatrículas dos imíveis cadastrados:");
 			MenuUtil.montaMenu(itensMenu, "");
 			opcao = MenuUtil.obterOpcao(itensMenu.size());
 			
@@ -161,6 +221,29 @@ public class Menu {
 		}
 		
 		return imovel;
+	}
+	
+	public static Fatura menuSelecionarFatura(List<Fatura> faturas) {
+		Fatura fatura = null;
+		
+		if (!faturas.isEmpty()) {			
+			List<String> itensMenu = new ArrayList<>();
+			int opcao;
+			
+			for (int i = 0; i < faturas.size(); i++) {
+				itensMenu.add("[ " + (i+1) + " ] " + faturas.get(i).getDataEmissao() 
+						+ "\t" + faturas.get(i).getValorCalculado() + "\t" + faturas.get(i).isQuitada());
+			}
+			
+			System.out.println("Faturas em aberto:");
+			System.out.println("Data Emissão \t Valor \t\t Quitada");
+			MenuUtil.montaMenu(itensMenu, "");
+			opcao = MenuUtil.obterOpcao(itensMenu.size());
+			
+			fatura = faturas.get(opcao-1);
+		}
+		
+		return fatura;
 	}
 	
 }

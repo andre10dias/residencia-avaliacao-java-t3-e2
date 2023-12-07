@@ -3,6 +3,7 @@ package Services;
 import java.util.ArrayList;
 import java.util.List;
 
+import Models.Cliente;
 import Models.Fatura;
 import Models.Imovel;
 
@@ -18,6 +19,14 @@ public class FaturaService {
 		return faturas;
 	}
 	
+	public static void addFatura(Fatura f) {
+		if (faturas == null) {
+			faturas = new ArrayList<>();
+		}
+		
+		faturas.add(f);
+	}
+	
 	public static List<Fatura> getFaturasQuitadas() {
 		List<Fatura> quitadas = new ArrayList<>();
 		
@@ -30,14 +39,21 @@ public class FaturaService {
 		return quitadas;
 	}
 	
-	public static Fatura gerarFatura(Imovel imovel, int leituraAtual) {
-		Fatura f = new Fatura(imovel, leituraAtual);
+	public static List<Fatura> getFaturasPendentesByImovel(Imovel imovel) {
+		List<Fatura> pendentes = new ArrayList<>();
 		
-		if (faturas == null) {
-			faturas = new ArrayList<>();
+		for (Fatura fatura : getFaturas()) {
+			if (fatura.getImovel().equals(imovel) && !fatura.isQuitada()) {
+				pendentes.add(fatura);
+			}
 		}
 		
-		faturas.add(f);
+		return pendentes;
+	}
+	
+	public static Fatura gerarFatura(Imovel imovel, int leituraAtual) {
+		Fatura f = new Fatura(imovel, leituraAtual);
+		addFatura(f);
 		
 		return f;
 	}

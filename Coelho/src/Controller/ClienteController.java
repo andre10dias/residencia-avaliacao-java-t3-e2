@@ -26,7 +26,7 @@ public class ClienteController {
 			System.out.print("\nCPF: ");
 			String cpf = entrada.nextLine();
 			
-			Imovel imovel = Menu.menuSelecionarImovel();
+			Imovel imovel = Menu.menuSelecionarImovel(ImovelService.getImoveis());
 			imoveis.add(imovel);
 			
 			Cliente cliente = new Cliente(nome, cpf);
