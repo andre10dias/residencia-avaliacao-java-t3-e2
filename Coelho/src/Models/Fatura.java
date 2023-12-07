@@ -81,11 +81,14 @@ public class Fatura {
 	public void setQuitada(boolean quitada) {
 		this.quitada = quitada;
 	}
-	
-	@Override
-	public String toString() {
-		return imovel.getMatricula()+ "\t" + this.dataEmissao + "\t" + this.valorConsumo 
-				+ "\t" + this.valorCalculado + "\t" + this.quitada;
-	}
+	public String getDataFormatada() {
+        return Util.formatDate(dataEmissao);
+    }
+
+    @Override
+    public String toString() {
+        return imovel.getMatricula() + "\t" + getDataFormatada() + "\t" + this.valorConsumo
+                + "\t" + this.valorCalculado + "\t" + this.quitada;
+    }
 
 }
