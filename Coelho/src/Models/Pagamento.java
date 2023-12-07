@@ -2,6 +2,8 @@ package Models;
 
 import java.util.Date;
 
+import Utils.Util;
+
 public class Pagamento {
 	
 	private Fatura fatura;
@@ -43,7 +45,7 @@ public class Pagamento {
 	}
 	
 	public String getDataFormatada() {
-        return Util.formatDate(dataEmissao);
+        return Util.formatDate(this.data);
     }
     @Override
     public String toString() {

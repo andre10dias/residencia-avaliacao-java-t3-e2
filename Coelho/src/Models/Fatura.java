@@ -2,6 +2,8 @@ package Models;
 
 import java.util.Date;
 
+import Utils.Util;
+
 public class Fatura {
 	
 	private Imovel imovel;
