@@ -52,4 +52,22 @@ public class ClienteController {
 		}
 	}
 
+	public static void alterarCliente() {
+		System.out.println("\n======================== Alterar cliente ========================\n");
+		System.out.print("\nDigite o CPF do cliente que deseja alterar: ");
+		String cpf = entrada.nextLine();
+		for (Cliente cliente : ClienteService.getClientes()) {
+			if (cliente.getCpf().equals(cpf)) {
+				System.out.print("\nDigite o novo nome do cliente: ");
+				String nome = entrada.nextLine();
+				cliente.setNome(nome);
+				System.out.println("Cliente alterado com sucesso!");
+				return;
+			}
+			else {
+				System.out.println("Cliente não encontrado!");
+			}
+		}
+	}
+
 }

@@ -29,4 +29,8 @@ public class ClienteService {
 		clientes.remove(c);
 	}
 
+	public static void alterarCliente(Cliente c) {
+		clientes.set(clientes.indexOf(c), c);
+	}
+
 }
