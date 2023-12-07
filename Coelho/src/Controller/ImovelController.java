@@ -53,5 +53,21 @@ public class ImovelController {
 			}
 		}
 	}
+
+	public static void alterarImovel() {
+		System.out.println("\n======================== Alterar imóvel ========================\n");
+		System.out.print("\nDigite a matrícula do imóvel que deseja alterar: ");
+		String matricula = entrada.nextLine();
+		for (Imovel imovel : ImovelService.getImoveis()) {
+			if (imovel.getMatricula().equals(matricula)) {
+				ImovelService.alterarImovel(imovel);
+				System.out.println("Imóvel alterado com sucesso!");
+				return;
+			}
+			else {
+				System.out.println("Imóvel não encontrado!");
+			}
+		}
+	}
 	
 }

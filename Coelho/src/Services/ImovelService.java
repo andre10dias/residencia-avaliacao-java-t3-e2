@@ -29,4 +29,8 @@ public class ImovelService {
 		imoveis.remove(i);
 	}
 
+	public static void alterarImovel(Imovel i) {
+		imoveis.set(imoveis.indexOf(i), i);
+	}
+
 }
