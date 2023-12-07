@@ -60,6 +60,11 @@ public class Menu {
 					menuPagamento();
 					opcao = 0;
 					break;
+
+				//case 5:
+				//	menuFalha();
+				//	opcao = 0;
+				//	break;
 					
 				case 0:
 					System.out.println("\nFinalizando programa...");
