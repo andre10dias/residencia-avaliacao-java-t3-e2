@@ -69,5 +69,20 @@ public class ImovelController {
 			}
 		}
 	}
+
+	public static void buscarImovel() {
+		System.out.println("\n======================== Buscar imóvel ========================\n");
+		System.out.print("\nDigite a matrícula do imóvel que deseja buscar: ");
+		String matricula = entrada.nextLine();
+		for (Imovel imovel : ImovelService.getImoveis()) {
+			if (imovel.getMatricula().equals(matricula)) {
+				System.out.println("Imóvel encontrado!");
+				return;
+			}
+			else {
+				System.out.println("Imóvel não encontrado!");
+			}
+		}
+	}
 	
 }
