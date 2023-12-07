@@ -77,7 +77,7 @@ public class Menu {
 	}
 
 	public static void menuCliente() {
-		List<String> itens = new ArrayList<>(Arrays.asList("[ 1 ] Cadastrar", "[ 2 ] Listar", "[ 0 ] Sair"));
+		List<String> itens = new ArrayList<>(Arrays.asList("[ 1 ] Cadastrar", "[ 2 ] Listar", "[ 3 ] Remover", "[ 0 ] Sair"));
 		int opcao;
 		
 		do {
