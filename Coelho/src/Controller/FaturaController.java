@@ -44,6 +44,16 @@ public class FaturaController {
         }
     }
 
+    public static void listarFaturasEmAberto() {
+        System.out.println("\n======================== Listar faturas em aberto ========================\n");
+
+        for (Fatura fatura : FaturaService.getFaturas()) {
+            if (!fatura.isQuitada()) {
+                System.out.println(fatura.toString());
+            }
+        }
+    }
+
     
 
 

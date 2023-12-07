@@ -82,6 +82,12 @@ public class Menu {
 				case 2:
 					FaturaController.novaLeitura();
 					break;
+				case 3:
+					FaturaController.listarFaturas();
+					break;
+				case 4:
+					FaturaController.listarFaturasEmAberto();
+					break;
 				default:
 					break;
 			}
