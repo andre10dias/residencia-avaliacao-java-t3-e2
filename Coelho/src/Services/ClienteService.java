@@ -55,14 +55,4 @@ public class ClienteService {
 
 		return null;
 	}
-
-	public void listarClientes(List<Cliente> _lista_clientes) {
-		System.out.println("\n\n==== Clientes da COELHO Ltda ====\n\n");
-
-		for (Cliente cliente : _lista_clientes) {
-			System.out.println("\nNome: " + cliente.getNome());
-			System.out.println("Email: " + cliente.getCpf());
-		}
-	}
-
 }
