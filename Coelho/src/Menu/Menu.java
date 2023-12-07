@@ -85,6 +85,10 @@ public class Menu {
 				case 2:
 					ClienteController.listarClientes();
 					break;
+
+				case 3:
+					ClienteController.removerCliente();
+					break;
 					
 				case 0:
 					menuPrincipal();
