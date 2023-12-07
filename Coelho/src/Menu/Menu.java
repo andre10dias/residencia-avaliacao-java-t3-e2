@@ -26,6 +26,16 @@ public class Menu {
 				case 2:
 					ClienteController.listarClientes();
 					break;
+				case 3:
+					ClienteController.removerCliente();
+					break;
+				case 4:
+					ClienteController.alterarCliente();
+					break;
+				case 5:
+					ClienteController.buscarCliente();
+					break;
+				
 	
 				default:
 					break;
