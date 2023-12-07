@@ -32,8 +32,9 @@ public class PagamentoController {
 			Pagamento pagamento = new Pagamento(faturaSelecionada, valor);
 			
 			List<Pagamento> pagamentosAnteriores = PagamentoService.getPagamentosByFatura(faturaSelecionada);
+			double valorPagamentosAnteriores = 0;
 			for (Pagamento p : pagamentosAnteriores) {
-				valor += p.getValor();
+				valorPagamentosAnteriores += p.getValor();
 			}
 			
 			if (valor == faturaSelecionada.getValorCalculado()) {
@@ -41,7 +42,7 @@ public class PagamentoController {
 			}
 			else if (valor > pagamento.getFatura().getValorCalculado()) {
 				pagamento.getFatura().setQuitada(true);
-				ReembolsoController.realizarReembolso(pagamento);
+				ReembolsoController.realizarReembolso(pagamento, valorPagamentosAnteriores);
 			}
 			
 			PagamentoService.addPagamento(pagamento);

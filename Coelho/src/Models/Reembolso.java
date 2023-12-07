@@ -12,9 +12,9 @@ public class Reembolso {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Reembolso(Pagamento pagamento) {
+	public Reembolso(Pagamento pagamento, double valorTodosPagamentos) {
 		this.pagamento = pagamento;
-		this.valor = pagamento.getValor() - getFatura().getValorCalculado();
+		this.valor = pagamento.getValor() + valorTodosPagamentos - getFatura().getValorCalculado();
 		this.data = new Date();
 	}
 

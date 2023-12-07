@@ -14,8 +14,8 @@ public class ReembolsoController {
 	
 	private static Scanner entrada = new Scanner(System.in);
 
-	public static void realizarReembolso(Pagamento pagamento) {
-		Reembolso reembolso = new Reembolso(pagamento);
+	public static void realizarReembolso(Pagamento pagamento, double valorTodosPagamentos) {
+		Reembolso reembolso = new Reembolso(pagamento, valorTodosPagamentos);
 		System.out.print("\nEste pagamento gerou um reembolso no valor de: " + reembolso.getValor());
 		ReembolsoService.addReembolso(reembolso);
 	}
@@ -26,7 +26,7 @@ public class ReembolsoController {
 		listar(reembolsos);
 	}
 
-	public static void consultarPagFatura() {
+	public static void consultarReembolsoFatura() {
 		System.out.println("\n======================== Listar reembolsos da fatura ========================\n");
 		Fatura fatura = Menu.menuSelecionarFatura(FaturaService.getFaturas());
 		List<Reembolso> reembolsos = ReembolsoService.getReembolsosByFatura(fatura);
