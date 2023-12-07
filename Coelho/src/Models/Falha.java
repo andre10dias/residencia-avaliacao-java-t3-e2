@@ -2,10 +2,10 @@ package Models;
 
 public class Falha {
 	
-	String descricao;
-    String tipo;
-    Imovel imovelAssociado;
-    Reparo reparo;
+	private String descricao;
+	private String tipo;
+	private Imovel imovelAssociado;
+	private Reparo reparo;
 
 	public Falha() {
 		// TODO Auto-generated constructor stub

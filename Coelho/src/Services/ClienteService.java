@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Models.Cliente;
+import Models.Imovel;
 
 public class ClienteService {
 
@@ -27,6 +28,20 @@ public class ClienteService {
 	
 	public static void removeCliente(Cliente c) {
 		clientes.remove(c);
+	}
+	
+	public static Cliente getClienteByImovel(Imovel i) {
+		for (Cliente cliente : clientes) {
+			List<Imovel> imoveis = cliente.getImoveis();
+			
+			for (Imovel imovel : imoveis) {
+				if (imovel.getMatricula() == i.getMatricula()) {
+					return cliente;
+				}
+			}
+		}
+		
+		return null;
 	}
 
 }

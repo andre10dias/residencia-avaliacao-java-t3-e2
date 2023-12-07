@@ -2,10 +2,10 @@ package Models;
 
 public class Imovel {
 	
-	String matricula;
-    String endereco;
-    int leituraAnterior;
-    int leituraAtual;
+	private String matricula;
+	private String endereco;
+	private int leituraAnterior;
+	private int leituraAtual;
 
 	public Imovel() {
 		// TODO Auto-generated constructor stub

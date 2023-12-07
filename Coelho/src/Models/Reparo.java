@@ -4,12 +4,12 @@ import java.util.Date;
 
 public class Reparo {
 	
-	String descricao;
-    String previsaoInicial;
-    Date dataInicio;
-    Date dataFim;
-    boolean resolvido;
-    Reparo proximoReparo;
+	private String descricao;
+	private String previsaoInicial;
+	private Date dataInicio;
+	private Date dataFim;
+	private boolean resolvido;
+	private Reparo proximoReparo;
 
 	public Reparo() {
 		// TODO Auto-generated constructor stub

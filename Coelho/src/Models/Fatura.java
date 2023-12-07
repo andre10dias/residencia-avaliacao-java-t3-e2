@@ -4,13 +4,13 @@ import java.util.Date;
 
 public class Fatura {
 	
-	Imovel imovel;
-    int valorConsumo;
-    Date dataEmissao;
-    int leituraAnterior;
-    int leituraAtual;
-    double valorCalculado;
-    boolean quitada;
+	private Imovel imovel;
+	private int valorConsumo;
+	private Date dataEmissao;
+	private int leituraAnterior;
+	private int leituraAtual;
+	private double valorCalculado;
+	private boolean quitada;
 
 	public Fatura() {
 		// TODO Auto-generated constructor stub
@@ -18,7 +18,7 @@ public class Fatura {
 
 	public Fatura(Imovel imovel, int leituraAtual) {
         this.imovel = imovel;
-        this.leituraAnterior = imovel.leituraAtual;
+        this.leituraAnterior = imovel.getLeituraAtual();
         this.leituraAtual = leituraAtual;
         this.dataEmissao = new Date();
         this.valorConsumo = leituraAtual - leituraAnterior;
@@ -80,6 +80,12 @@ public class Fatura {
 
 	public void setQuitada(boolean quitada) {
 		this.quitada = quitada;
+	}
+	
+	@Override
+	public String toString() {
+		return imovel.getMatricula()+ "\t" + this.dataEmissao + "\t" + this.valorConsumo 
+				+ "\t" + this.valorCalculado + "\t" + this.quitada;
 	}
 
 }

@@ -4,9 +4,9 @@ import java.util.Date;
 
 public class Pagamento {
 	
-	Fatura fatura;
-    double valor;
-    Date data;
+	private Fatura fatura;
+	private double valor;
+	private Date data;
 
 	public Pagamento() {
 		// TODO Auto-generated constructor stub

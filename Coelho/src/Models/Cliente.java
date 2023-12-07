@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Cliente {
 	
-	String nome;
-    String cpf;
-    List<Imovel> imoveis;
+	private String nome;
+	private String cpf;
+	private List<Imovel> imoveis;
 
 	public Cliente() {
 		// TODO Auto-generated constructor stub

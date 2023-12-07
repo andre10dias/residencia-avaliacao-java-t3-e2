@@ -3,9 +3,7 @@ package Controller;
 import java.util.List;
 import java.util.Scanner;
 
-import Models.Cliente;
 import Models.Imovel;
-import Services.ClienteService;
 import Services.ImovelService;
 
 public class ImovelController {
@@ -31,10 +29,14 @@ public class ImovelController {
 		List<Imovel> imoveis = ImovelService.getImoveis();
 		if (!imoveis.isEmpty()) {
 			System.out.println("Matrícula \t Endereço");
-			System.out.println("-------------------");
+			System.out.println("-----------------------");
+			
 			for (Imovel imovel : imoveis) {
 				System.out.println(imovel.toString());
 			}
+		}
+		else {
+			System.out.println("\\nNão existem dados para serem exibidos.");
 		}
 	}
 	

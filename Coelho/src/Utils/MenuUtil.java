@@ -8,7 +8,9 @@ public class MenuUtil {
 	private static Scanner entrada = new Scanner(System.in);
 	
 	public static void montaMenu(List<String> itens, String titulo) {
-		System.out.println("\n======================== " + titulo + " ========================\n");
+		if (titulo != "") {			
+			System.out.println("\n======================== " + titulo + " ========================\n");
+		}
 	    
 	    for (String item : itens) {
 			System.out.println(item);
