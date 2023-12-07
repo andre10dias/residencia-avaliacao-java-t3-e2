@@ -4,11 +4,9 @@ import java.util.List;
 import java.util.Scanner;
 
 import Menu.Menu;
-import Models.Cliente;
 import Models.Fatura;
 import Models.Imovel;
 import Models.Pagamento;
-import Services.ClienteService;
 import Services.FaturaService;
 import Services.ImovelService;
 import Services.PagamentoService;
@@ -43,8 +41,7 @@ public class PagamentoController {
 			}
 			else if (valor > pagamento.getFatura().getValorCalculado()) {
 				pagamento.getFatura().setQuitada(true);
-				
-				//TODO: Implementar reembolso
+				ReembolsoController.realizarReembolso(pagamento);
 			}
 			
 			PagamentoService.addPagamento(pagamento);
