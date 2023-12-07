@@ -38,25 +38,17 @@ public class ClienteController {
 
 	public static void removerCliente() {
 		System.out.println("\n======================== Remover cliente ========================\n");
-		
-		List<Cliente> clientes = ClienteService.getClientes();
-		if (!clientes.isEmpty()) {
-			System.out.println("CPF \t\t Nome");
-			System.out.println("-------------------");
-			for (Cliente cliente : clientes) {
-				System.out.println(cliente.toString());
-			}
-		}
-		
 		System.out.print("\nDigite o CPF do cliente que deseja remover: ");
 		String cpf = entrada.nextLine();
-		
-		Cliente cliente = ClienteService.getClienteByCpf(cpf);
-		if (cliente != null) {
-			ClienteService.removeCliente(cliente);
-			System.out.println("\nCliente removido com sucesso!");
-		} else {
-			System.out.println("\nCliente não encontrado!");
+		for (Cliente cliente : ClienteService.getClientes()) {
+			if (cliente.getCpf().equals(cpf)) {
+				ClienteService.removeCliente(cliente);
+				System.out.println("Cliente removido com sucesso!");
+				return;
+			}
+			else {
+				System.out.println("Cliente não encontrado!");
+			}
 		}
 	}
 
