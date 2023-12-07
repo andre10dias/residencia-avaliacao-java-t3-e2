@@ -37,5 +37,21 @@ public class ImovelController {
 			}
 		}
 	}
+
+	public static void removerImovel() {
+		System.out.println("\n======================== Remover imóvel ========================\n");
+		System.out.print("\nDigite a matrícula do imóvel que deseja remover: ");
+		String matricula = entrada.nextLine();
+		for (Imovel imovel : ImovelService.getImoveis()) {
+			if (imovel.getMatricula().equals(matricula)) {
+				ImovelService.removeImovel(imovel);
+				System.out.println("Imóvel removido com sucesso!");
+				return;
+			}
+			else {
+				System.out.println("Imóvel não encontrado!");
+			}
+		}
+	}
 	
 }
