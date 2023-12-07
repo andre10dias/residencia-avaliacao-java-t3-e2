@@ -47,5 +47,15 @@ public class Cliente {
 	public String toString() {
 		return this.cpf + "\t" + this.nome;
 	}
+	// Método para adicionar um imóvel ao cliente
+    public void adicionarImovel(Imovel imovel) {
+        this.imoveis.add(imovel);
+    }
+
+    // Método para alterar dados do cliente
+    public void alterarDados(String nome, String cpf) {
+        this.nome = nome;
+        this.cpf = cpf;
+    }
 
 }

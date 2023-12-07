@@ -42,10 +42,11 @@ public class Pagamento {
 		this.data = data;
 	}
 	
-	@Override
-	public String toString() {
-		return this.data + "\t\t" + this.valor + "\t\t" + this.fatura.getValorCalculado() 
-			+ "\t" + this.fatura.isQuitada();
-	}
-
+	public String getDataFormatada() {
+        return Util.formatDate(dataEmissao);
+    }
+    @Override
+    public String toString() {
+        return fatura.getImovel().getMatricula() + "\t" + getDataFormatada() + "\t" + this.valor;
+    }
 }

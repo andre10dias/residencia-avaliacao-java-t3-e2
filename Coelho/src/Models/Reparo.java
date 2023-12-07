@@ -69,5 +69,14 @@ public class Reparo {
 	public void setProximoReparo(Reparo proximoReparo) {
 		this.proximoReparo = proximoReparo;
 	}
+	 // Métodos adicionados para formatar a data e representação em string
+	 public String getDataFormatada() {
+        return Util.formatDate(dataInicio);
+    }
+
+    @Override
+    public String toString() {
+        return "Descrição: " + descricao + "\tPrevisão Inicial: " + previsaoInicial + "\tData Início: " + getDataFormatada() + "\tResolvido: " + resolvido;
+    }
 
 }
