@@ -36,6 +36,14 @@ public class FaturaController {
         FaturaService.novaLeitura(fatura, leituraAtual);
     }
 
+    public static void listarFaturas() {
+        System.out.println("\n======================== Listar faturas ========================\n");
+
+        for (Fatura fatura : FaturaService.getFaturas()) {
+            System.out.println(fatura.toString());
+        }
+    }
+
     
 
 
