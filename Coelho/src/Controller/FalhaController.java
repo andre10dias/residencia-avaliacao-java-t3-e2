@@ -16,7 +16,7 @@ public class FalhaController {
     private static Scanner entrada = new Scanner(System.in);
 
     public static void cadastrarFalha() {
-        System.out.println("\n====================== Cadastrar falha ======================");
+        System.out.println("\n==========/============ Cadastrar falha ======================");
 
         Imovel imovelSelecionado = Menu.menuSelecionarImovel(ImovelService.getImoveis());
 
@@ -27,7 +27,7 @@ public class FalhaController {
             System.out.print("\nTipo: ");
             String tipo = entrada.nextLine();
 
-            Falha falha = new Falha(descricao, tipo, imovelSelecionado);
+            new Falha(descricao, tipo, imovelSelecionado);
 
             System.out.println("\nFalha cadastrada com sucesso!");
         }
