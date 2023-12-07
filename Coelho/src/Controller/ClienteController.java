@@ -70,4 +70,20 @@ public class ClienteController {
 		}
 	}
 
+	public static void buscarCliente() {
+		System.out.println("\n======================== Buscar cliente ========================\n");
+		System.out.print("\nDigite o CPF do cliente que deseja buscar: ");
+		String cpf = entrada.nextLine();
+		for (Cliente cliente : ClienteService.getClientes()) {
+			if (cliente.getCpf().equals(cpf)) {
+				System.out.println("Cliente encontrado!");
+				System.out.println(cliente.toString());
+				return;
+			}
+			else {
+				System.out.println("Cliente não encontrado!");
+			}
+		}
+	}
+
 }
