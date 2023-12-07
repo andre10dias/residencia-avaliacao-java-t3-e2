@@ -65,5 +65,28 @@ public class Menu {
 			}
 		}
 	}
+
+	public static void menuFatura() {
+		List<String> itens = new ArrayList<>(Arrays.asList("[ 1 ] Cadastrar", "[ 2 ] Listar"));
+		int opcao;
+		
+		while (true) {
+			MenuUtil.montaMenu(itens, "Menu Faturas");
+			opcao = MenuUtil.obterOpcao(itens.size());
+			
+			switch (opcao) {
+				case 1:
+					FaturaController.cadastrarFatura();
+					break;
+					
+				case 2:
+					FaturaController.listarFaturas();
+					break;
+	
+				default:
+					break;
+			}
+		}
+	}
 	
 }

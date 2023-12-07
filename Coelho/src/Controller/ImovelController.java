@@ -84,5 +84,14 @@ public class ImovelController {
 			}
 		}
 	}
+
+	public static Imovel getImovelByMatricula(String matricula) {
+		for (Imovel imovel : ImovelService.getImoveis()) {
+			if (imovel.getMatricula().equals(matricula)) {
+				return imovel;
+			}
+		}
+		return null;
+	}
 	
 }
