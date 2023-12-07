@@ -6,6 +6,7 @@ import java.util.List;
 
 import Controller.ClienteController;
 import Controller.ImovelController;
+import Controller.FaturaController;
 import Utils.MenuUtil;
 
 public class Menu {
@@ -78,11 +79,9 @@ public class Menu {
 				case 1:
 					FaturaController.cadastrarFatura();
 					break;
-					
 				case 2:
-					FaturaController.listarFaturas();
+					FaturaController.novaLeitura();
 					break;
-	
 				default:
 					break;
 			}

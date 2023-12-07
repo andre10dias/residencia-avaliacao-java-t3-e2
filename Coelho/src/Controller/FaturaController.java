@@ -23,6 +23,21 @@ public class FaturaController {
         FaturaService.addFatura(fatura);
     }
 
+    public static void novaLeitura() {
+        System.out.println("\n======================== Nova leitura ========================");
+
+        System.out.print("\nMatrícula do imóvel: ");
+        String matricula = entrada.nextLine();
+        var imovel = ImovelController.getImovelByMatricula(matricula);
+
+        System.out.print("\nLeitura atual: ");
+        int leituraAtual = entrada.nextInt();
+        Fatura fatura = FaturaService.getFaturaByImovel(imovel);
+        FaturaService.novaLeitura(fatura, leituraAtual);
+    }
+
+    
+
 
     
 }
