@@ -29,6 +29,11 @@ public class ClienteService {
 	public static void removeCliente(Cliente c) {
 		clientes.remove(c);
 	}
+
+	// Método para alterar dados do cliente
+    public static void alterarDadosCliente(Cliente cliente, String novoNome, String novoCpf) {
+        cliente.alterarDados(novoNome, novoCpf);
+    }
 	
 	public static Cliente getClienteByImovel(Imovel i) {
 		for (Cliente cliente : clientes) {
