@@ -54,7 +54,6 @@ public class FaturaService {
 	public static Fatura gerarFatura(Imovel imovel, int leituraAtual) {
 		Fatura f = new Fatura(imovel, leituraAtual);
 		addFatura(f);
-		
 		return f;
 	}
 

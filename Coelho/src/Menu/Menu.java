@@ -8,6 +8,7 @@ import Controller.ClienteController;
 import Controller.FaturaController;
 import Controller.ImovelController;
 import Controller.PagamentoController;
+import Controller.ReembolsoController;
 import Models.Cliente;
 import Models.Fatura;
 import Models.Imovel;
@@ -28,6 +29,7 @@ public class Menu {
 		
 		if (!FaturaService.getFaturas().isEmpty()) {
 			itens.add("[ 4 ] Pagamento");
+			itens.add("[ 5 ] Reembolso");
 		}
 		
 		itens.add("[ 0 ] Sair");
@@ -58,6 +60,11 @@ public class Menu {
 					opcao = 0;
 					break;
 					
+				case 5:
+					menuReembolso();
+					opcao = 0;
+					break;
+					
 				case 0:
 					System.out.println("\nFinalizando programa...");
 					break;
@@ -68,9 +75,9 @@ public class Menu {
 			}
 		} while (opcao != 0);
 	}
-	
+
 	public static void menuCliente() {
-		List<String> itens = new ArrayList<>(Arrays.asList("[ 1 ] Cadastrar", "[ 2 ] Listar", "[ 0 ] Sair"));
+		List<String> itens = new ArrayList<>(Arrays.asList("[ 1 ] Cadastrar", "[ 2 ] Listar", "[ 3 ] Remover", "[ 0 ] Sair"));
 		int opcao;
 		
 		do {
@@ -85,6 +92,10 @@ public class Menu {
 				case 2:
 					ClienteController.listarClientes();
 					break;
+
+				case 3:
+					ClienteController.removerCliente();
+					break;
 					
 				case 0:
 					menuPrincipal();
@@ -97,7 +108,7 @@ public class Menu {
 	}
 	
 	public static void menuImovel() {
-		List<String> itens = new ArrayList<>(Arrays.asList("[ 1 ] Cadastrar", "[ 2 ] Listar", "[ 0 ] Sair"));
+		List<String> itens = new ArrayList<>(Arrays.asList("[ 1 ] Cadastrar", "[ 2 ] Listar", "[ 3 ] Remover", "[ 0 ] Sair"));
 		int opcao;
 		
 		do {
@@ -111,6 +122,10 @@ public class Menu {
 					
 				case 2:
 					ImovelController.listarImoveis();
+					break;
+				
+				case 3:
+					ImovelController.removerImovel();
 					break;
 					
 				case 0:
@@ -177,6 +192,35 @@ public class Menu {
 					
 				case 3:
 					PagamentoController.consultarPagFatura();
+					break;
+					
+				case 0:
+					menuPrincipal();
+					break;
+	
+				default:
+					break;
+			}
+		} while (opcao != 0);
+	}
+	
+	private static void menuReembolso() {
+		List<String> itens = new ArrayList<>(Arrays.asList(
+				"[ 1 ] Listar todos os reembolsos", "[ 2 ] Consultar reembolsos da fatura", "[ 0 ] Sair"
+		));
+		int opcao;
+		
+		do {
+			MenuUtil.montaMenu(itens, "Menu Reembolso");
+			opcao = MenuUtil.obterOpcao(itens.size());
+			
+			switch (opcao) {
+				case 1:
+					ReembolsoController.listarTodos();
+					break;
+					
+				case 2:
+					ReembolsoController.consultarReembolsoFatura();
 					break;
 					
 				case 0:

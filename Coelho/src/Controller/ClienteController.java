@@ -9,6 +9,7 @@ import Models.Cliente;
 import Models.Imovel;
 import Services.ClienteService;
 import Services.ImovelService;
+import Utils.Util;
 
 public class ClienteController {
 	
@@ -38,6 +39,31 @@ public class ClienteController {
 			System.out.println("\\nNão existem dados para serem exibidos.");
 		}
 	}
+
+	public static void removerCliente() {
+		System.out.println("\n======================== Remover cliente ========================");
+		List<Cliente> clientes = ClienteService.getClientes();
+
+		if (!clientes.isEmpty()) {
+			for (int i = 0; i < clientes.size(); i++) {
+				System.out.println((i + 1) + ". " + clientes.get(i).getNome());
+			}
+
+			System.out.print("Qual cliente deseja selecionar? Escolha pelo número de cada um: ");
+			int escolha = Util.stringToInt(entrada.nextLine());
+
+			if (escolha >= 1 && escolha <= clientes.size()) {
+				Cliente clienteSelecionado = clientes.get(escolha - 1);
+				ClienteService.removeCliente(clienteSelecionado);
+				System.out.println("Cliente removido com sucesso.");
+			} else {
+				System.out.println("Número de cliente inválido.");
+			}
+		} else {
+			System.out.println("\\nNão existem dados para serem exibidos.");
+		}
+	}
+	
 	
 	public static void listarClientes() {
 		System.out.println("\n======================== Listar cliente ========================\n");
