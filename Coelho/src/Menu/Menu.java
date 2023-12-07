@@ -8,6 +8,8 @@ import Controller.ClienteController;
 import Controller.FaturaController;
 import Controller.ImovelController;
 import Controller.PagamentoController;
+import Controller.FalhaController;
+
 import Models.Cliente;
 import Models.Fatura;
 import Models.Imovel;
@@ -15,6 +17,7 @@ import Services.ClienteService;
 import Services.FaturaService;
 import Services.ImovelService;
 import Utils.MenuUtil;
+
 
 public class Menu {
 	
@@ -155,6 +158,37 @@ public class Menu {
 			}
 		} while (opcao != 0);
 	}
+
+	public static void menuFalha() {
+		List<String> itens = new ArrayList<>(Arrays.asList(
+				"[ 1 ] Cadastrar falha", "[ 2 ] Listar todas as falhas", "[ 0 ] Sair"
+		));
+
+		int opcao;
+
+		do{
+			MenuUtil.montaMenu(itens, "Menu Falha");
+			opcao = MenuUtil.obterOpcao(itens.size());
+
+			switch (opcao) {
+				case 1:
+					FalhaController.cadastrarFalha();
+					break;
+
+				case 2:
+					FalhaController.listarFalhas();
+					break;
+
+				case 0:
+					menuPrincipal();
+					break;
+
+				default:
+					break;
+			}
+		} while (opcao != 0);
+		}
+	
 	
 	public static void menuPagamento() {
 		List<String> itens = new ArrayList<>(Arrays.asList(
