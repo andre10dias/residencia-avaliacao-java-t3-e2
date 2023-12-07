@@ -8,25 +8,61 @@ import Models.Cliente;
 public class ClienteService {
 
 	private static List<Cliente> clientes;
-	
+
 	public static List<Cliente> getClientes() {
 		if (clientes == null) {
 			clientes = new ArrayList<>();
 		}
-		
+
 		return clientes;
 	}
-	
-	public static void addCliente(Cliente c) {
+
+	public static void addCliente(Cliente _Cliente) {
 		if (clientes == null) {
 			clientes = new ArrayList<>();
 		}
-		
-		clientes.add(c);
+
+		for (Cliente cliente : clientes) {
+			if (_Cliente.getCpf() == cliente.getCpf()) {
+				System.out.println("\n Já existe cliente cadastrado com esse CPF !\n\n");
+			} else {
+				clientes.add(_Cliente);
+				System.out.println("\nCliente cadastrado  !!\n\n");
+
+			}
+		}
+
 	}
-	
-	public static void removeCliente(Cliente c) {
-		clientes.remove(c);
+
+	public static void removeCliente(Cliente _Cliente) {
+
+		Cliente cliente = consultarCliente(clientes,_Cliente.getCpf());
+
+		if(cliente == null){
+			System.out.println("Não é possível remover um cliente que não está cadastrado");
+		}else{
+			clientes.remove(_Cliente);
+
+		}
+	}
+
+	static Cliente consultarCliente(List<Cliente> _lista_clientes, String _cliente_cpf) {
+		for (Cliente cliente : _lista_clientes) {
+			if (cliente.getCpf() == _cliente_cpf) {
+				return cliente;
+			}
+		}
+
+		return null;
+	}
+
+	public void listarClientes(List<Cliente> _lista_clientes) {
+		System.out.println("\n\n==== Clientes da COELHO Ltda ====\n\n");
+
+		for (Cliente cliente : _lista_clientes) {
+			System.out.println("\nNome: " + cliente.getNome());
+			System.out.println("Email: " + cliente.getCpf());
+		}
 	}
 
 }
